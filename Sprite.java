@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slimecraft;
+package fortnite2;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -11,7 +11,7 @@ import java.awt.Rectangle;
 
 /**
  *
- * @author jword
+ * @author 802811
  */
 public abstract class Sprite {
     private int speed;
@@ -19,13 +19,13 @@ public abstract class Sprite {
     private int width, height;
     private Color color;
     private Rectangle bounds;
-
+    
     public Sprite(int speed, int x, int y, int width, int height, Color color) {
         this.speed = speed;
         this.x = x;
         this.y = y;
-        this.vx = (int) (Math.random() * this.speed);
-        this.vy = (int) (Math.random() * this.speed);
+        this.vx = (int) (Math.random() * this.speed * 2 - this.speed);
+        this.vy = (int) (Math.random() * this.speed * 2 - this.speed);
         this.width = width;
         this.height = height;
         this.color = color;

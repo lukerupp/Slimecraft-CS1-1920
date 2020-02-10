@@ -12,15 +12,13 @@ import java.awt.Graphics;
  *
  * @author 802811
  */
-public class Food extends Sprite {
-     private static final int WIDTH = 10;
-    private static final int HEIGHT = 5;
-    private static final Color color = Color.GREEN;
-    private static final int speed = 4;
+public class Yeeter extends Sprite {
+    private static final int WIDTH = 10;
+    private static final int HEIGHT = 15;
     
     
     
-    public Food (int x, int y) {
+    public Yeeter (int speed, int x, int y, Color color) {
         super (speed, x, y, WIDTH, HEIGHT, color);
     }
     
