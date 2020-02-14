@@ -12,10 +12,16 @@ import java.awt.Color;
  * @author 802811
  */
 public class Yuri extends Yeeter {
-    private static final int SPEED = 5; 
+    private static final int SPEED = 3; 
     private static final Color COLOR = Color.BLUE;
     
     public Yuri(int x, int y) {
         super(SPEED, x, y, COLOR);
+    }
+    public Yuri reproduce(Yuri mate) {
+        int newX = super.getX() + (int) (Math.random() * 30 - 15);
+        int newY = super.getY() + (int) (Math.random() * 30 - 15);
+        Yuri baby = new Yuri (newX, newY);
+        return baby;
     }
 }

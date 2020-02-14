@@ -19,6 +19,7 @@ public abstract class Sprite {
     private int width, height;
     private Color color;
     private Rectangle bounds;
+    private boolean alive = true;
     
     public Sprite(int speed, int x, int y, int width, int height, Color color) {
         this.speed = speed;
@@ -36,6 +37,32 @@ public abstract class Sprite {
         this.x += this.vx;
         this.y += this.vy;
         this.bounds = new Rectangle(x, y, width, height);
+    }
+    public void die() {
+        this.alive = false;
+    }
+    public void grow(double rate) {
+        this.width *= rate;
+        this.height *= rate;
+    }
+    public boolean collide(Sprite other) {
+        boolean collided = this.bounds.intersects(other.bounds);
+        if (collided) {
+            this.didCollide();
+            other.didCollide();
+        }
+        return collided;
+    }
+    public void collideWorldBounds(int cWidth, int cHeight) {
+        if (this.x < 0 || this.x + this.width > cWidth)
+            this.vx = -this.vx;
+        if (this.y < 0 || this.y + this.height > cHeight)
+            this.vy = -this.vy;
+        
+    }
+    public void didCollide() {
+        this.vx = -this.vx;
+        this.vy = -this.vy;
     }
     
     public abstract void draw(Graphics g);
@@ -60,7 +87,29 @@ public abstract class Sprite {
         return color;
     }
     
-    public boolean collide(Sprite other) {
-        return this.bounds.intersects(other.bounds);
+
+    public Rectangle getBounds() {
+        return bounds;
     }
+
+    public void setBounds(Rectangle bounds) {
+        this.bounds = bounds;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+    
 }

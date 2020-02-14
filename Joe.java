@@ -18,4 +18,21 @@ public class Joe extends Yeeter {
     public Joe(int x, int y) {
         super(SPEED, x, y, COLOR);
     }
+    public void fight(Yuri yuri) {
+        if (super.collide(yuri)) {
+            if (super.getStrength() >= yuri.getStrength()) {
+                yuri.die();
+                this.didWin(yuri);
+            } else {
+                this.die();
+                yuri.didWin(this);
+            }
+        }
+    }
+    public Joe reproduce (Joe mate) {
+        int newX = super.getX() + (int) (Math.random() * 10 - 5);
+        int newY = super.getY() + (int) (Math.random() * 10 - 5);
+        Joe baby = new Joe (newX, newY);
+        return baby;
+    }
 }
